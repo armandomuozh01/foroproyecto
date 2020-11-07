@@ -1,0 +1,105 @@
+<br>
+<br>
+<div class="container" style="background-color: transparent;">
+    <div class="col-md-12 text-right">
+        <button type="submit" class="btn btn-outline-danger" (click)="logout()">LogOut</button>
+    </div>
+</div>
+<!--Parte de insertar posteo-->
+<br>
+<div class="container" style="background-color: transparent;">
+    <div class="col-lg-12 text-center">
+        <button name="btn" type="button" class="btn btn-info btn-lg btn-block">Añadir Posteo</button>
+    </div>
+    <br>
+    <form #posteoForm="ngForm">
+        <input type="hidden" name="$keyRegistro" #$keyRegistro="ngModel"
+            [(ngModel)]="posteoService.selectedPosteo.$keyRegistro">
+
+        <label for="titulo"><b>Titulo*</b></label>
+
+        <input class="form-control" id="titulo" name="titulo" #titulo="ngModel"
+            [(ngModel)]="posteoService.selectedPosteo.titulo">
+
+        <br>
+        <label for="cuerpo"><b>Cuerpo*</b></label>
+        <input type="text" class="form-control" name="cuerpo" id="cuerpo" #cuerpo="ngModel"
+            [(ngModel)]="posteoService.selectedPosteo.cuerpo">
+        <br>
+
+        <label for="tipo"><b>Tipo*</b></label>
+
+        <input type="text" class="form-control" name="tipo" id="tipo" #tipo="ngModel"
+            [(ngModel)]="posteoService.selectedPosteo.tipo">
+        <br>
+
+        <div class="col-lg-12 text-center">
+            <button class="btn btn-primary btn-lg" type="submit" (click)="onSubmit(posteoForm)">
+                Guardar
+            </button>
+        </div>
+    </form>
+</div>
+<!--Fin de la parte de insertar posteo-->
+
+<!--Crud posteo-->
+<br><br>
+<div class="container" style="background-color: transparent;">
+    <div class="col-lg-12 text-center">
+        <button name="btn" type="button" class="btn btn-success btn-lg btn-block">Buscar Posteo</button>
+    </div>
+    <br>
+    <div class="col-md-12 text-center">
+        <div class="container">
+            <div class="row justify-content-md-center">
+                <div class="row">
+                    <div class="col">
+                        <input type="text" class="form-control" id="buscar" placeholder="Buscar un tipo de posteo"
+                            [(ngModel)]='buscar'>
+                    </div>
+                    <div class="col col-lg-2">
+                        <button type="button" (click)="MostrarPosteo()" class="btn btn-light">Todos</button>
+                        <br>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+            <button class="btn btn-primary btn-lg" (click)='consulPosteo();'>Consultar</button>
+        </div>
+    </div>
+
+    <br><br>
+
+    <div class="container" style="background-color: transparent;">
+        <div class="col-lg-12 text-center">
+            <button name="btn" type="button" class="btn btn-warning btn-lg btn-block">Listar Posteos</button>
+        </div>
+        <br>
+        <div class="col-md-12 text-center">
+            <table class="table table-bordered">
+                <tr>
+                    <td>Titulo</td>
+                    <td>Cuerpo</td>
+                    <td>Tipo</td>
+                    <td>Accion</td>
+                </tr>
+
+                <tr *ngFor="let posteolist of posteoList">
+                    <td>{{posteolist.titulo}}</td>
+                    <td>{{posteolist.cuerpo}}</td>
+                    <td>{{posteolist.tipo}}</td>
+                    <td>
+                        <button type="button" (click)="onEdit(posteolist)" class="btn btn-warning">
+                            Editar
+                        </button>
+
+                        <button type="button" (click)="onDelete(posteolist.$keyRegistro)" class="btn btn-danger">
+                            Borrar
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <!--Fin crud posteo-->

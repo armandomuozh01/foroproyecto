@@ -1,0 +1,55 @@
+<body style="background-size:2000px;background-image:url(assets/img/letu.jpg)">
+    <br>
+    <div class="container" style="background-color: transparent;">
+        <div class="row">
+            <div class=" text-center">
+                <a routerLink="/home"><img src="assets/img/icon.png" width="65px" height="65px" /></a>
+            </div>
+            <div class="col-md-12 text-center">
+                <button name="btn" type="button" class="btn btn-outline-light">Registrarse</button>
+            </div>
+
+        </div>
+        <br>
+        <br>
+        <br>
+        <div class="row">
+            <div class="col-md-4 offset-4">
+                <form #form="ngForm" (ngSubmit)="guardar()">
+                    <div class="form-group">
+                        <label for="nombre" style="color: white">Nombre</label>                   
+                        <input type="text" [(ngModel)]="usuario.nombre" name="nombre" class="form-control"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="matricula" style="color: white">Matricula</label>
+                        <input type="number" [(ngModel)]="usuario.matricula" name="matricula" class="form-control"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="cuatrimestre" style="color: white">Cuatrimestre</label>
+                        <input type="number" [(ngModel)]="usuario.cuatrimestre" name="cuatrimestre" class="form-control"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="grupo" style="color: white">Grupo</label>
+                        <input type="text" [(ngModel)]="usuario.grupo" name="grupo" class="form-control"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="carrera" style="color: white">Carrera</label>
+                        <input type="text" [(ngModel)]="usuario.carrera" name="carrera" class="form-control"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="contra" style="color: white">Contraseña</label>
+                        <input type="password" [(ngModel)]="usuario.contra" name="contra" class="form-control"/>
+                    </div>
+                    <div class="col-md-12 text-center">
+                        <button type="submit" class="btn btn-outline-primary">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+</body>
